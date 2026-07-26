@@ -1,114 +1,171 @@
 # Grammar AI
 
-A production-oriented backend service for AI-powered grammar correction built with Java and Spring Boot.
+> A production-oriented backend service for AI-powered grammar correction built with Java and Spring Boot.
 
-The project focuses on building an extensible AI application using clean architecture, provider abstraction, and production-ready engineering practices rather than a simple wrapper around an LLM API.
+Grammar AI is designed to provide AI-assisted grammar correction through a provider-agnostic architecture. The project emphasizes clean architecture, SOLID principles, and maintainable backend design while supporting multiple Large Language Model (LLM) providers through a common abstraction.
 
-> **Status:** 🚧 Under active development
-
----
-
-## Overview
-
-Grammar AI exposes REST APIs that accept English text and return structured grammar corrections with explanations and language insights.
-
-The project is designed to support multiple AI providers behind a common abstraction, allowing the backend to switch providers without affecting the application layer.
-
-Current development is focused on establishing a maintainable architecture before integrating external AI services.
+**Project Status:** 🚧 Under Active Development
 
 ---
 
-## Planned Capabilities
+## Features
 
-- Grammar correction
+### Implemented
+
+- Spring Boot 3.x project setup
+- Java 21
+- Maven build configuration
+- Health Check API
+- Conventional Git workflow
+
+### Planned
+
+- AI-powered grammar correction
 - Grammar mistake explanations
-- CEFR proficiency estimation
 - Grammar quality scoring
+- CEFR proficiency estimation
 - Practice sentence generation
 - AI provider abstraction
+- OpenAI integration
+- Mock AI provider for local development
 - Request validation
-- Structured error handling
-- Observability and logging
-- Containerized deployment
+- Global exception handling
+- Structured logging
+- Unit and integration testing
+- Docker support
+- PostgreSQL integration
+- Redis caching
+- CI/CD pipeline
+
+---
+
+## Design Goals
+
+- Clean Architecture
+- SOLID Principles
+- Provider-independent AI integration
+- Maintainable codebase
+- Production-ready REST APIs
+- Extensible application design
+- High testability
 
 ---
 
 ## Technology Stack
 
 | Component | Technology |
-|----------|------------|
+|-----------|------------|
 | Language | Java 21 |
 | Framework | Spring Boot 3 |
 | Build Tool | Maven |
-| API | REST |
+| API Style | REST |
 | Validation | Jakarta Validation |
 | Testing | JUnit 5 |
 | Version Control | Git |
 
-Future additions include PostgreSQL, Redis, Docker and OpenAI integration.
+Planned additions include PostgreSQL, Redis, Docker, and OpenAI API integration.
+
+---
+
+## Architecture
+
+```text
+                    Client
+
+                      │
+
+               REST Controller
+
+                      │
+
+              Grammar Service
+
+                      │
+
+          ┌───────────┴───────────┐
+          │                       │
+
+    Prompt Builder           AI Client
+
+                                  │
+
+        ┌──────────────┬──────────────┐
+        │              │              │
+
+   Mock AI Client  OpenAI Client  Gemini Client
+```
+
+The application is designed around an abstraction layer that isolates AI providers from the business logic, allowing providers to be replaced without impacting the rest of the system.
 
 ---
 
 ## Project Structure
 
-```
-src
-├── main
-│   ├── java
-│   └── resources
-└── test
+```text
+grammar-ai
+├── src
+│   ├── main
+│   │   ├── java
+│   │   └── resources
+│   └── test
+├── pom.xml
+└── README.md
 ```
 
-The internal package structure will evolve following Clean Architecture principles.
+The internal package structure will evolve following Clean Architecture principles as new modules are introduced.
 
 ---
 
-## Running Locally
+## Running the Application
 
-Clone the repository
+Clone the repository:
 
 ```bash
 git clone https://github.com/aniisunny/grammar-ai.git
 ```
 
-Move into the project directory
+Navigate to the project:
 
 ```bash
 cd grammar-ai
 ```
 
-Start the application
+Start the application:
 
 ```bash
 mvn spring-boot:run
 ```
 
-Health endpoint
+Verify the application is running:
 
-```
+```http
 GET http://localhost:8080/health
 ```
 
-Expected response
+Expected response:
 
-```
+```text
 Grammar AI is running 🚀
 ```
 
 ---
 
-## Roadmap
+## Development Roadmap
 
-- [x] Spring Boot project bootstrap
-- [x] Health endpoint
-- [ ] Project architecture
-- [ ] AI client abstraction
-- [ ] Mock AI provider
-- [ ] Grammar correction service
-- [ ] OpenAI integration
-- [ ] Unit and integration testing
-- [ ] Docker support
-- [ ] Production deployment
+| Module | Status |
+|---------|--------|
+| Spring Boot Bootstrap | ✅ Completed |
+| Health Check API | ✅ Completed |
+| Project Architecture | 🚧 In Progress |
+| AI Client Abstraction | ⏳ Planned |
+| Mock AI Provider | ⏳ Planned |
+| Grammar Correction API | ⏳ Planned |
+| Prompt Builder | ⏳ Planned |
+| Response Validation | ⏳ Planned |
+| OpenAI Integration | ⏳ Planned |
+| Testing | ⏳ Planned |
+| Docker Support | ⏳ Planned |
+| Production Deployment | ⏳ Planned |
 
 ---
 
@@ -118,26 +175,33 @@ Grammar AI is running 🚀
 
 Initial project bootstrap.
 
-- Spring Boot setup
+- Spring Boot application setup
 - Java 21 configuration
-- Maven build
-- Health endpoint
-- Git versioning
+- Maven build configuration
+- Health Check API
+- Git repository initialization
 
 ---
 
-## Repository Goals
+## Engineering Principles
 
-This repository is intended to demonstrate backend engineering practices including:
+The project is being developed with the following engineering practices:
 
-- Clean architecture
-- SOLID principles
-- Dependency inversion
-- Extensible AI integrations
-- Production-oriented REST API design
-- Maintainable code organization
+- Layered Architecture
+- Dependency Injection
+- Constructor-based wiring
+- Interface-driven design
+- Separation of Concerns
+- Clean API contracts
+- Extensible AI provider abstraction
 
-The implementation is intentionally incremental, with each milestone introducing a single architectural concern.
+---
+
+## Contributing
+
+Contributions, suggestions, and discussions are welcome.
+
+Please open an issue before submitting significant changes.
 
 ---
 
@@ -147,3 +211,9 @@ The implementation is intentionally incremental, with each milestone introducing
 
 - GitHub: https://github.com/aniisunny
 - LinkedIn: https://www.linkedin.com/in/aniruddha-m-agrawal
+
+---
+
+## License
+
+This project is licensed under the MIT License.

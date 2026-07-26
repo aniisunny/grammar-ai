@@ -1,0 +1,31 @@
+### ==========================================
+### Grammar AI API
+### Base URL
+### http://localhost:8080
+### ==========================================
+
+### Health Check
+
+GET http://localhost:8080/health
+
+###
+
+### Grammar Correction
+
+POST http://localhost:8080/api/v1/grammar/check
+Content-Type: application/json
+
+{
+  "text": "I goes office yesterday."
+}
+
+###
+
+### Validation Test
+
+POST http://localhost:8080/api/v1/grammar/check
+Content-Type: application/json
+
+{
+  "text": ""
+}

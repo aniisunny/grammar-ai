@@ -2,7 +2,7 @@ package com.aniruddha.grammarai.client;
 
 import com.aniruddha.grammarai.dto.GrammarResponse;
 
-public interface AIClient {
+public interface GrammarCorrectionClient {
 
     GrammarResponse correctGrammar(String text);
 
